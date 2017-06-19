@@ -1,6 +1,6 @@
 package ru.maximov.money.tests
 
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Test
 import ru.maximov.money.Dollar
 
@@ -11,8 +11,14 @@ class MoneyTests {
 
     @Test
     fun testMultiplication () {
-        var five = Dollar(5)
-        five.times(2)
-        assertEquals(10, five.amount)
+        val five = Dollar(5)
+        assertEquals(Dollar(10), five.times(2))
+        assertEquals(Dollar(15), five.times(3))
+    }
+
+    @Test
+    fun testEquality () {
+        assertTrue(Dollar(5).equals(Dollar(5)))
+        assertFalse(Dollar(5).equals(Dollar(6)))
     }
 }
