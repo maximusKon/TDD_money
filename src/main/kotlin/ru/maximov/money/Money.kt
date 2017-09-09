@@ -1,6 +1,6 @@
 package ru.maximov.money
 
-abstract class Money(protected var amount: Int) {
+abstract class Money(val amount: Int, val currency : String) {
 
     override fun equals(other: Any?): Boolean {
         val money =  other as Money
@@ -11,9 +11,9 @@ abstract class Money(protected var amount: Int) {
 
     companion object {
 
-        fun dollar(amount: Int) : Money = Dollar(amount)
+        fun dollar(amount: Int) : Money = Dollar(amount, "USD")
 
-        fun franc(amount: Int) : Money = Franc(amount)
+        fun franc(amount: Int) : Money = Franc(amount, "CHF")
 
     }
 }
