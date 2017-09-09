@@ -2,6 +2,7 @@ package ru.maximov.money.tests
 
 import org.junit.Assert.*
 import org.junit.Test
+import ru.maximov.money.Franc
 import ru.maximov.money.Money
 
 /**
@@ -37,5 +38,10 @@ class MoneyTests {
         assertEquals("USD", Money.dollar(1).currency)
         assertEquals("CHF", Money.franc(1).currency)
 
+    }
+
+    @Test
+    fun testDifferentClassEquality(){
+        assertTrue(Money(10, "CHF").equals(Franc(10, "CHF")))
     }
 }

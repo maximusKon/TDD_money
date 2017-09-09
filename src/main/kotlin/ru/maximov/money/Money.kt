@@ -1,13 +1,15 @@
 package ru.maximov.money
 
-abstract class Money(val amount: Int, val currency : String) {
+open class Money(val amount: Int, val currency : String) {
 
     override fun equals(other: Any?): Boolean {
         val money =  other as Money
-        return amount == money.amount && javaClass.equals(money.javaClass)
+        return amount == money.amount && currency == money.currency
     }
 
-    abstract fun times(multiplier : Int) : Money
+    fun  times(multiplier: Int) : Money {
+        return Money(amount * multiplier, currency)
+    }
 
     companion object {
 
@@ -15,5 +17,9 @@ abstract class Money(val amount: Int, val currency : String) {
 
         fun franc(amount: Int) : Money = Franc(amount, "CHF")
 
+    }
+
+    override fun toString(): String {
+        return "$amount $currency"
     }
 }
