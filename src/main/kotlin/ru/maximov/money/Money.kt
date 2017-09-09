@@ -13,9 +13,9 @@ open class Money(val amount: Int, val currency : String) {
 
     companion object {
 
-        fun dollar(amount: Int) : Money = Dollar(amount, "USD")
+        fun dollar(amount: Int) : Money = Money(amount, "USD")
 
-        fun franc(amount: Int) : Money = Franc(amount, "CHF")
+        fun franc(amount: Int) : Money = Money(amount, "CHF")
 
     }
 
