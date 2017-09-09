@@ -2,6 +2,8 @@ package ru.maximov.money.tests
 
 import org.junit.Assert.*
 import org.junit.Test
+import ru.maximov.money.Bank
+import ru.maximov.money.Expression
 import ru.maximov.money.Money
 
 /**
@@ -37,4 +39,13 @@ class MoneyTests {
 
     }
 
+    @Test
+    fun testSimpleAddition(){
+        val five = Money.dollar(5)
+        val sum = five.plus(five)
+        val bank = Bank()
+        val reduced = bank.reduce(sum, "USD")
+        assertEquals(Money.dollar(10), reduced)
+    }
 }
+
