@@ -3,6 +3,7 @@ package ru.maximov.money.tests
 import org.junit.Assert.*
 import org.junit.Test
 import ru.maximov.money.Bank
+import ru.maximov.money.Expression
 import ru.maximov.money.Money
 import ru.maximov.money.Sum
 
@@ -76,6 +77,16 @@ class MoneyTests {
         bank.addRate("CHF", "USD", 2)
         val result = bank.reduce(Money.franc(2), "USD")
         assertEquals(Money.dollar(1), result)
+    }
+
+    @Test
+    fun testMixedAddition(){
+        val fiveBucks:Expression = Money.dollar(5)
+        val tenFranks:Expression = Money.franc(10)
+        val bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        val result:Money = bank.reduce(fiveBucks.plus(tenFranks), "USD")
+        assertEquals(Money.dollar(10), result)
     }
 }
 

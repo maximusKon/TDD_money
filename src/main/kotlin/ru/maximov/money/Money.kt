@@ -12,9 +12,9 @@ class Money(val amount: Int, val currency : String) : Expression {
         return amount == money.amount && currency == money.currency
     }
 
-    fun  times(multiplier: Int) : Money = Money(amount * multiplier, currency)
+    override fun times(multiplier: Int) : Expression = Money(amount * multiplier, currency)
 
-    fun plus(addend: Money): Expression = Sum(this, addend)
+    override fun plus(addend: Expression): Expression = Sum(this, addend)
 
     companion object {
 
