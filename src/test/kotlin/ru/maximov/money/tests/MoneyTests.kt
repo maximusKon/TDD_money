@@ -3,8 +3,8 @@ package ru.maximov.money.tests
 import org.junit.Assert.*
 import org.junit.Test
 import ru.maximov.money.Bank
-import ru.maximov.money.Expression
 import ru.maximov.money.Money
+import ru.maximov.money.Sum
 
 /**
  * Created by konstantin on 19.06.17.
@@ -46,6 +46,28 @@ class MoneyTests {
         val bank = Bank()
         val reduced = bank.reduce(sum, "USD")
         assertEquals(Money.dollar(10), reduced)
+    }
+
+    @Test
+    fun testPlusReturnSum(){
+        val five = Money.dollar(5)
+        val result = five.plus(five)
+        val sum : Sum = result as Sum
+        assertEquals(five, sum.augend)
+        assertEquals(five, sum.addend)
+    }
+
+    @Test
+    fun testReduceSum(){
+        val sum = Sum(Money.dollar(3), Money.dollar(4))
+        val result = Bank().reduce(sum, "USD")
+        assertEquals(Money.dollar(7), result)
+    }
+
+    @Test
+    fun testReduceMoney(){
+        val result = Bank().reduce(Money.dollar(1), "USD")
+        assertEquals(Money.dollar(1), result)
     }
 }
 

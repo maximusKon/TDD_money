@@ -1,6 +1,8 @@
 package ru.maximov.money
 
 class Money(val amount: Int, val currency : String) : Expression {
+    override fun reduce(to: String): Money = this
+
 
     override fun equals(other: Any?): Boolean {
         val money =  other as Money
@@ -9,7 +11,7 @@ class Money(val amount: Int, val currency : String) : Expression {
 
     fun  times(multiplier: Int) : Money = Money(amount * multiplier, currency)
 
-    fun plus(addend: Money): Expression = Money(amount + addend.amount, currency)
+    fun plus(addend: Money): Expression = Sum(this, addend)
 
     companion object {
 

@@ -2,5 +2,6 @@ package ru.maximov.money
 
 class Bank {
 
-    fun reduce(source : Expression, to : String) : Money? = Money.dollar(10)
+    fun reduce(source : Expression, to : String) : Money = source.reduce(to)
+
 }
